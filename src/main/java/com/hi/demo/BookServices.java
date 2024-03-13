@@ -54,4 +54,16 @@ public class BookServices implements BookRepository {
         return up;
     }
 
+    @Override
+    public void deleteBook(int id)
+    {
+        Book b=hmap.get(id);
+
+        if(b==null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        else
+        {
+            hmap.remove(id);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+    }
 }

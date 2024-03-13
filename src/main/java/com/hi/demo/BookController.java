@@ -4,6 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 //import com.hi.demo.*;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,5 +51,11 @@ public class BookController {
     public Book updateBook(@RequestBody Book book, @PathVariable("bookid") int bookid)
     {
         return bookService.updateBook(bookid, book);
+    }
+
+    @DeleteMapping("/books/{bookid}")
+    public void deleBook(@PathVariable("bookid") int id)
+    {
+        bookService.deleteBook(id);
     }
 }
